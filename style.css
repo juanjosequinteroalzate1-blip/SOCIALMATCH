@@ -1,0 +1,652 @@
+
+/* =========================================
+   1. VARIABLES Y CONFIGURACIÓN GENERAL
+========================================= */
+
+:root {
+    --bg: #f8f7ff;
+    --ink: #292342;
+    --muted: #6b6680;
+    --purple: #7753dc;
+    --border: #e6e2f2;
+    --white: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background:
+        radial-gradient(circle at 90% 5%, #ece3ff, transparent 30%),
+        var(--bg);
+    color: var(--ink);
+    font-family: Inter, system-ui, Arial, sans-serif;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:focus-visible,
+input:focus-visible,
+a:focus-visible {
+    outline: 3px solid #b09cff;
+    outline-offset: 3px;
+}
+
+
+/* =========================================
+   2. BARRA DE NAVEGACIÓN
+========================================= */
+
+.navbar {
+    background: #ffffffeb;
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 16px max(5%, calc((100vw - 1140px) / 2));
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    position: sticky;
+    top: 0;
+    z-index: 5;
+}
+
+.brand {
+    text-decoration: none;
+    color: var(--ink);
+    font-size: 22px;
+    font-weight: 850;
+    white-space: nowrap;
+}
+
+.brand-icon {
+    display: inline-grid;
+    place-items: center;
+
+    width: 34px;
+    height: 34px;
+
+    background: var(--purple);
+    color: white;
+    border-radius: 10px;
+    margin-right: 5px;
+}
+
+.purple {
+    color: var(--purple);
+}
+
+nav {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+nav button {
+    border: 0;
+    background: transparent;
+    color: var(--muted);
+    padding: 9px 10px;
+    border-radius: 9px;
+    font-size: 13px;
+}
+
+nav button:hover {
+    background: #f0eaff;
+    color: var(--purple);
+}
+
+
+/* =========================================
+   3. ESTRUCTURA DE LAS PÁGINAS
+========================================= */
+
+.container {
+    max-width: 1140px;
+    margin: auto;
+    padding: 45px 22px 85px;
+    min-height: 76vh;
+}
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+    animation: fade 0.22s ease;
+}
+
+@keyframes fade {
+    from {
+        opacity: 0.3;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+
+/* =========================================
+   4. TÍTULOS Y TEXTOS
+========================================= */
+
+h1 {
+    font-size: clamp(42px, 5.4vw, 68px);
+    line-height: 1.1;
+    letter-spacing: -2.7px;
+    margin: 20px 0;
+}
+
+h2 {
+    font-size: clamp(31px, 4vw, 45px);
+    letter-spacing: -1.4px;
+    margin: 14px 0;
+}
+
+h3 {
+    margin: 8px 0 12px;
+}
+
+p {
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+.eyebrow {
+    color: var(--purple);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.7px;
+}
+
+.hero p {
+    max-width: 520px;
+}
+
+
+/* =========================================
+   5. PÁGINA DE INICIO
+========================================= */
+
+.hero {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: 35px;
+    min-height: 470px;
+}
+
+.name-form {
+    margin-top: 25px;
+}
+
+.name-form label {
+    display: block;
+    font-weight: 750;
+    margin-bottom: 10px;
+}
+
+.form-row,
+.actions,
+.toolbar {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.form-row input {
+    min-width: 180px;
+    flex: 1;
+    padding: 15px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: white;
+}
+
+.hero-art {
+    height: 360px;
+    position: relative;
+    display: grid;
+    place-items: center;
+}
+
+.orb {
+    height: 215px;
+    width: 215px;
+    border-radius: 50%;
+
+    display: grid;
+    place-items: center;
+
+    color: white;
+    font-size: 100px;
+    font-weight: 850;
+
+    background: linear-gradient(140deg, #d3b5ff, #7753dc);
+    box-shadow: 0 25px 65px #9875e36b;
+}
+
+.float-card {
+    position: absolute;
+    background: white;
+    padding: 16px 19px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 12px 35px #34265b16;
+    font-weight: 700;
+}
+
+.top {
+    top: 30px;
+    left: 0;
+}
+
+.middle {
+    right: 0;
+    top: 140px;
+}
+
+.bottom {
+    bottom: 20px;
+    left: 30px;
+}
+
+.info-strip {
+    display: flex;
+    gap: 20px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+
+    color: #5e5287;
+    font-size: 13px;
+    font-weight: 650;
+}
+
+
+/* =========================================
+   6. BOTONES
+========================================= */
+
+.primary,
+.secondary,
+.small-btn {
+    border-radius: 12px;
+    padding: 13px 19px;
+    font-weight: 750;
+    border: 1px solid transparent;
+}
+
+.primary {
+    background: linear-gradient(120deg, #9c6ef2, #6d48d4);
+    color: white;
+    box-shadow: 0 8px 18px #7753dc29;
+}
+
+.primary:hover {
+    filter: brightness(1.07);
+}
+
+.secondary,
+.small-btn {
+    background: white;
+    border-color: var(--border);
+    color: var(--ink);
+}
+
+.secondary:hover,
+.small-btn:hover {
+    border-color: #a98ee9;
+}
+
+.small-btn {
+    font-size: 12px;
+    padding: 10px;
+}
+
+
+/* =========================================
+   7. TARJETAS DE REDES E INTERESES
+========================================= */
+
+.network-grid,
+.interest-grid,
+.recommendation-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 17px;
+    margin: 28px 0;
+}
+
+.network-card,
+.interest-card,
+.content-card,
+.math-panel,
+.history-entry {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 23px;
+    box-shadow: 0 8px 30px #2d215a08;
+}
+
+.network-card,
+.interest-card {
+    text-align: left;
+    color: var(--ink);
+    transition: transform 0.15s, border-color 0.15s;
+}
+
+.network-card:hover,
+.interest-card:hover {
+    transform: translateY(-3px);
+    border-color: #a68ce7;
+}
+
+.network-card .emoji,
+.interest-card .emoji,
+.content-card .emoji {
+    font-size: 36px;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.network-card strong,
+.interest-card strong {
+    display: block;
+    font-size: 18px;
+}
+
+.network-card small,
+.interest-card small {
+    display: block;
+    color: var(--muted);
+    margin-top: 7px;
+}
+
+.interest-card.selected {
+    background: #efe8ff;
+    border: 2px solid var(--purple);
+    padding: 22px;
+}
+
+.interest-card.selected:after {
+    content: "✓ Seleccionado";
+    display: block;
+    color: var(--purple);
+    font-size: 12px;
+    font-weight: 750;
+    margin-top: 12px;
+}
+
+
+/* =========================================
+   8. MENSAJES Y ETIQUETAS
+========================================= */
+
+.error {
+    color: #c13d5b;
+    min-height: 20px;
+    font-size: 13px;
+}
+
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 24px 0;
+}
+
+.chip {
+    display: inline-block;
+    border-radius: 100px;
+    padding: 10px 15px;
+    background: #ede7ff;
+    color: #6542bd;
+    font-weight: 750;
+    font-size: 13px;
+}
+
+.highlight {
+    background: linear-gradient(130deg, #f0e9ff, #fff);
+    border: 1px solid #ded2fa;
+    border-radius: 20px;
+    padding: 28px;
+    margin: 25px 0;
+}
+
+.toolbar {
+    margin: 24px 0;
+}
+
+
+/* =========================================
+   9. TARJETAS DE RECOMENDACIONES
+========================================= */
+
+.content-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.content-card h3 {
+    font-size: 19px;
+}
+
+.content-card p {
+    font-size: 14px;
+}
+
+.content-card .tag {
+    color: var(--purple);
+    font-weight: 750;
+    font-size: 12px;
+}
+
+.content-card .score {
+    font-weight: 750;
+    color: #4c397b;
+    margin-top: auto;
+}
+
+.card-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.small-btn.saved {
+    background: #fce8f0;
+    color: #b83370;
+}
+
+.reason {
+    background: #f4f0ff;
+    border-radius: 10px;
+    padding: 12px;
+    margin-top: 12px;
+    color: #5e5088;
+    font-size: 13px;
+}
+
+
+/* =========================================
+   10. HISTORIAL
+========================================= */
+
+.history-list {
+    display: grid;
+    gap: 12px;
+    margin: 25px 0;
+}
+
+
+/* =========================================
+   11. EXPLICACIÓN DEL ALGORITMO
+========================================= */
+
+.math-panel {
+    margin-top: 25px;
+    overflow-x: auto;
+}
+
+.math-panel h3 {
+    margin-top: 25px;
+}
+
+.math-line,
+.matrix-wrap {
+    display: flex;
+    gap: 7px;
+    flex-wrap: wrap;
+}
+
+.number {
+    display: inline-block;
+    padding: 10px 13px;
+    border-radius: 9px;
+    background: #f0eaff;
+    border: 1px solid #dfd2fc;
+    color: #5635a7;
+    font-weight: 750;
+}
+
+.matrix-wrap {
+    display: block;
+}
+
+.matrix-row {
+    display: flex;
+    gap: 7px;
+    margin: 6px 0;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.matrix-row .number {
+    min-width: 42px;
+    text-align: center;
+}
+
+.matrix-label {
+    min-width: 180px;
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.score-row {
+    margin: 9px 0;
+    padding: 10px;
+    background: #faf9ff;
+    border-radius: 9px;
+}
+
+.note {
+    font-size: 12px;
+}
+
+
+/* =========================================
+   12. PIE DE PÁGINA
+========================================= */
+
+footer {
+    text-align: center;
+    border-top: 1px solid var(--border);
+    padding: 25px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+
+/* =========================================
+   13. DISEÑO RESPONSIVE
+========================================= */
+
+@media (max-width: 800px) {
+
+    .navbar {
+        position: static;
+        display: block;
+        padding: 14px 5%;
+    }
+
+    nav {
+        margin-top: 12px;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-art {
+        height: 270px;
+    }
+
+    .orb {
+        height: 155px;
+        width: 155px;
+        font-size: 70px;
+    }
+
+    .float-card {
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    .container {
+        padding-top: 30px;
+    }
+
+    .form-row {
+        display: grid;
+    }
+
+    .network-grid,
+    .interest-grid,
+    .recommendation-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 520px) {
+
+    .network-grid,
+    .interest-grid,
+    .recommendation-grid {
+        grid-template-columns: 1fr;
+    }
+
+    h1 {
+        letter-spacing: -1px;
+    }
+
+    .hero-art {
+        display: none;
+    }
+
+    .navbar nav button {
+        padding: 7px;
+        font-size: 12px;
+    }
+}

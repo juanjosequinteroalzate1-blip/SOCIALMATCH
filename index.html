@@ -1,0 +1,266 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SocialMatch: descubre contenido para tus redes sociales según tus intereses.">
+    <title>SocialMatch | Descubre tu mundo digital</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="navbar">
+    <a class="brand" href="#" data-page="home">
+        <span class="brand-icon">S</span>
+        SocialMatch<span class="purple">.</span>
+    </a>
+
+    <nav aria-label="Navegación">
+        <button data-page="home">Inicio</button>
+        <button data-page="explore">Explorar</button>
+        <button data-page="favorites">Favoritos</button>
+        <button data-page="history">Historial</button>
+        <button data-page="algorithm">Mi algoritmo</button>
+        <button data-page="contact">Contacto</button>
+    </nav>
+</header>
+
+<main class="container">
+
+    <!-- INICIO -->
+    <section class="page active" id="home">
+        <div class="hero">
+            <div>
+                <span class="eyebrow">✦ TUS GUSTOS, TUS REDES, TUS RECOMENDACIONES</span>
+
+                <h1>
+                    Descubre contenido que
+                    <span class="purple">conecta contigo.</span>
+                </h1>
+
+                <p>
+                    Elige una red social, cuéntanos qué te gusta y descubre
+                    recomendaciones creadas para ti mediante matrices y vectores.
+                </p>
+
+                <form id="name-form" class="name-form">
+                    <label for="username">Primero, ¿cómo te llamas?</label>
+
+                    <div class="form-row">
+                        <input
+                            id="username"
+                            maxlength="35"
+                            autocomplete="given-name"
+                            placeholder="Escribe tu nombre"
+                            required
+                        >
+                        <button class="primary" type="submit">
+                            Comenzar →
+                        </button>
+                    </div>
+
+                    <p id="name-error" class="error" role="status"></p>
+                </form>
+            </div>
+
+            <div class="hero-art">
+                <div class="orb">S</div>
+                <div class="float-card top">🎵 Música para ti</div>
+                <div class="float-card middle">⚽ Tus intereses</div>
+                <div class="float-card bottom">✨ Descubre más</div>
+            </div>
+        </div>
+
+        <div class="info-strip">
+            <span>✓ Encuestas rápidas</span>
+            <span>✓ Recomendaciones personalizadas</span>
+            <span>✓ Álgebra Lineal aplicada</span>
+        </div>
+    </section>
+
+    <!-- SELECCIÓN DE REDES -->
+    <section class="page" id="networks">
+        <span class="eyebrow">TU EXPERIENCIA COMIENZA AQUÍ</span>
+        <h2 id="network-greeting">¡Hola!</h2>
+        <p>¿Qué red social quieres explorar hoy?</p>
+        <div class="network-grid" id="network-grid"></div>
+    </section>
+
+    <!-- ENCUESTA -->
+    <section class="page" id="interests">
+        <span class="eyebrow" id="interest-network">
+            PERSONALIZA TU EXPERIENCIA
+        </span>
+
+        <h2 id="interest-title">¿Qué te gustaría encontrar?</h2>
+
+        <p>
+            Marca todos los gustos que quieras.
+            Puedes elegir varios.
+        </p>
+
+        <div class="interest-grid" id="interest-grid"></div>
+
+        <p class="error" id="interest-error" role="status"></p>
+
+        <div class="actions">
+            <button class="secondary" data-page="networks">
+                ← Cambiar red social
+            </button>
+
+            <button class="primary" id="confirm-interests">
+                Ver mis gustos →
+            </button>
+        </div>
+    </section>
+
+    <!-- RESUMEN DE GUSTOS -->
+    <section class="page" id="summary">
+        <span class="eyebrow">PERFIL DE INTERESES CREADO</span>
+
+        <h2 id="summary-title">¡Listo!</h2>
+
+        <p>Estos son los intereses que elegiste:</p>
+
+        <div class="chips" id="summary-chips"></div>
+
+        <div class="highlight">
+            <h3>¡Anímate a empezar a navegar!</h3>
+
+            <p>
+                Preparamos ideas para descubrir contenido relacionado
+                con lo que más te gusta.
+            </p>
+
+            <button class="primary" id="start-exploring">
+                Comenzar a explorar →
+            </button>
+        </div>
+
+        <button class="secondary" data-page="interests">
+            Modificar mis gustos
+        </button>
+    </section>
+
+    <!-- RECOMENDACIONES -->
+    <section class="page" id="explore">
+        <span class="eyebrow">DESCUBRE TU MUNDO DIGITAL</span>
+
+        <h2 id="explore-title">Tus recomendaciones</h2>
+
+        <p id="explore-description">
+            Estas ideas fueron seleccionadas según tus preferencias.
+        </p>
+
+        <div class="toolbar">
+            <button class="secondary" data-page="interests">
+                Editar intereses
+            </button>
+
+            <button class="secondary" data-page="networks">
+                Cambiar red
+            </button>
+
+            <button class="secondary" data-page="algorithm">
+                Ver las matemáticas
+            </button>
+        </div>
+
+        <div id="recommendation-list" class="recommendation-grid"></div>
+    </section>
+
+    <!-- FAVORITOS -->
+    <section class="page" id="favorites">
+        <span class="eyebrow">TUS DESCUBRIMIENTOS</span>
+
+        <h2>Mis favoritos ♥</h2>
+
+        <p>Las recomendaciones que guardes aparecerán aquí.</p>
+
+        <div id="favorite-list" class="recommendation-grid"></div>
+    </section>
+
+    <!-- HISTORIAL -->
+    <section class="page" id="history">
+        <span class="eyebrow">TU RECORRIDO</span>
+
+        <h2>Mi historial</h2>
+
+        <p>Consultas recientes realizadas en este navegador.</p>
+
+        <div id="history-list" class="history-list"></div>
+
+        <button class="secondary" id="clear-history">
+            Borrar historial
+        </button>
+    </section>
+
+    <!-- ALGORITMO -->
+    <section class="page" id="algorithm">
+        <span class="eyebrow">EL MOTOR MATEMÁTICO</span>
+
+        <h2>¿Cómo funciona mi algoritmo?</h2>
+
+        <p>
+            SocialMatch representa tus intereses con un vector
+            y cada contenido con una fila de una matriz.
+            El producto punto produce una puntuación de afinidad.
+        </p>
+
+        <div class="math-panel">
+            <h3>Columnas de la matriz</h3>
+            <div id="math-labels" class="chips"></div>
+
+            <h3>Tu vector de preferencias (P)</h3>
+            <div id="user-vector" class="math-line"></div>
+
+            <h3>Matriz de contenidos (M)</h3>
+            <div id="content-matrix" class="matrix-wrap"></div>
+
+            <h3>Resultados: M × Pᵀ</h3>
+            <div id="score-results"></div>
+
+            <p class="note">
+                Los datos son ejemplos académicos. Una puntuación alta
+                significa mayor afinidad, no un porcentaje ni una
+                tendencia real de la plataforma.
+            </p>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="page" id="contact">
+        <span class="eyebrow">SOBRE EL PROYECTO</span>
+
+        <h2>Contacto y acerca de SocialMatch</h2>
+
+        <div class="highlight">
+            <h3>Un proyecto académico de Álgebra Lineal</h3>
+
+            <p>
+                SocialMatch demuestra cómo las matrices y los vectores
+                pueden utilizarse para organizar gustos y recomendar contenido.
+                Esta versión es un prototipo y no está afiliada a las
+                redes sociales mencionadas.
+            </p>
+
+            <p>
+                ¿Quieres dejar una sugerencia?
+                Cuéntasela a los integrantes durante la presentación del proyecto.
+            </p>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    SocialMatch © 2026 · Anteproyecto académico · Recomendaciones de demostración
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
